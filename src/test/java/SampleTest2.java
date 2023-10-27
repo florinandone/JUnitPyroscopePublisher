@@ -8,6 +8,7 @@ public class SampleTest2 {
 
     @Test
     public void wait100ec() throws InterruptedException {
+
         TimeUnit.SECONDS.sleep(10);
     }
 }

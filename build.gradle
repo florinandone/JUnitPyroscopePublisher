@@ -12,8 +12,21 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'io.pyroscope:agent:0.12.2'
 }
 
 test {
     useJUnitPlatform()
+
+    systemProperty 'PYROSCOPE_ENABLED', 'TRUE'
+    systemProperty 'PYROSCOPE_SERVER_ADDRESS', 'https://profiles-prod-009.grafana.net'
+    systemProperty 'PYROSCOPE_BASIC_AUTH_USER', '671478'
+    systemProperty 'PYROSCOPE_APPLICATION_NAME', 'PublishJavaTest'
+    systemProperty 'PYROSCOPE_FORMAT', 'jfr;'
+    systemProperty 'PYROSCOPE_PROFILER_ALLOC', '0'
+    systemProperty 'PYROSCOPE_PROFILER_EVENT', 'cpu'
+    systemProperty 'PYROSCOPE_LOG_LEVEL', 'debug'
+    systemProperty 'PYROSCOPE_LABELS', 'project=sample_publish'
+    systemProperty 'PYROSCOPE_BASIC_AUTH_PASSWORD', System.getProperty("PYROSCOPE_BASIC_AUTH_PASSWORD")
+
 }
